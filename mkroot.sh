@@ -57,7 +57,7 @@ TOP="$PWD"
 MYBUILD="$BUILD/${CROSS_BASE:-host-}tmp"
 mkdir -p "$MYBUILD" "$DOWNLOAD" || exit 1
 
-if ! cc --static -xc - <<< "int main(void) {return 0;}" -o "$BUILD"/hello
+if ! ${CROSS_COMPILE}cc --static -xc - <<< "int main(void) {return 0;}" -o "$BUILD"/hello
 then
   echo "This compiler can't create a static binary." >&2
   exit 1
